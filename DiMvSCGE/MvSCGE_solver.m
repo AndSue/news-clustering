@@ -60,21 +60,12 @@ for it=1:maxIters
     end
 end
 
-%disp(log10(Obj))
-%plot(1:10,log10(Obj(1:10)));
-%xlabel('Number of iterations','FontName','Times New Roman');  %xÖá×ø±êÃèÊö
-%ylabel('lg(Obj.value)','FontName','Times New Roman'); %yÖá×ø±êÃèÊö
-
 l = kmeans(F,C,'maxiter',MAXiter,'replicates',REPlic,'EmptyAction','singleton');
 
 [ACC,NMI,PUR] = ClusteringMeasure(y,l);
 [Fscore,Precision,R] = compute_f(y,l);
-%[AR,~,~,~]=RandIndex(y,l);
-%result = [ACC NMI PUR Fscore Precision R AR];
+
 result = [NMI Fscore Precision ACC PUR];
-%result = Clustering8Measure(y,l);
-%ydata=tsne(F,l);
-%imagesc(l);
 
 
 
